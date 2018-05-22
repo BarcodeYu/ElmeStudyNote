@@ -17,12 +17,12 @@
             <span class="text">{{seller.supports[0].description}}</span>
           </div>
         </div>
-        <div class="support-count" v-if="seller.supports" v-on:click="openDetail">
+        <div class="support-count" v-if="seller.supports" @click="openDetail">
           <span class="count">{{seller.supports.length}}个</span>
           <i class="icon-keyboard_arrow_right"></i>
         </div>
       </div>
-      <div class="bulletin-wrapper">
+      <div class="bulletin-wrapper" @click="openDetail">
         <span class="bulletin_title"></span>
         <span class="bulletin_text">{{seller.bulletin}}</span>
         <i class="icon-keyboard_arrow_right"></i>
@@ -30,11 +30,22 @@
       <div class="background">
         <img width="100%" height="100%" :src="seller.avatar" alt="">
       </div>
-      <div class="detail" v-show="detailShow"></div>
+      <div class="detail" v-show="detailShow">
+        <div class="detail_wrapper clearfix">
+          <div class="detail_main">
+            <h1 class="detail_name">{{seller.name}}</h1>
+          </div>
+        </div>
+        <div class="detail_close">
+          <i class="icon-close" @click="detailClose()"></i>
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
+// import star from '../star/star.vue';
+
 export default {
   props: {
     seller: {
@@ -49,6 +60,9 @@ export default {
   methods: {
     openDetail: function() {
       this.detailShow = true;
+    },
+    detailClose: function() {
+      this.detailShow = false;
     }
   },
   created() {
@@ -181,4 +195,23 @@ export default {
     overflow auto
     background rgba(7,17,27,0.8)
     z-index 20
+    .detail_wrapper
+      min-height 100%
+      width 100%
+      .detail_main
+        margin-top 64px
+        padding-bottom 64px
+        .detail_name
+          line-height 16px
+          text-align center
+          font-size 16px
+          font-weight 700
+    .detail_close
+      position relative
+      width 32px
+      height 32px
+      margin -64px auto 0 auto
+      clear both
+      font-size 32px
+
 </style>

@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
     <v-header :seller=seller></v-header>
-=======
-    <v-header  :seller="seller"></v-header>
->>>>>>> 45e3e8917bfde96db619ebd681a850abd41389a2
     <div class="tab border-1px">
       <div class="tab-item">
         <router-link to="/goods">商品</router-link>
