@@ -34,6 +34,7 @@
         <div class="detail_wrapper clearfix">
           <div class="detail_main">
             <h1 class="detail_name">{{seller.name}}</h1>
+            <star :size="48" :score="seller.score"></star>
           </div>
         </div>
         <div class="detail_close">
@@ -44,7 +45,7 @@
 </template>
 
 <script>
-// import star from '../star/star.vue';
+import star from '../star/star.vue';
 
 export default {
   props: {
@@ -67,6 +68,9 @@ export default {
   },
   created() {
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
+  },
+  components: {
+    'star': star
   }
 };
 </script>
